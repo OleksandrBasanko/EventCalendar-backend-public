@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsCalendar.API", "EventsCalendar.API\EventsCalendar.API.csproj", "{0952CAF6-8DB5-4B6C-9D04-7D7E3248FE13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsCalendar.Domain", "EventsCalendar.Domain\EventsCalendar.Domain.csproj", "{8CA8CC4B-C15F-4E75-BBCE-255FB77AC911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsCalendar.Application", "EventsCalendar.Application\EventsCalendar.Application.csproj", "{A5F4509A-07B2-4E46-BEF7-D0367518D279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsCalendar.Infrastructure", "EventsCalendar.Infrastructure\EventsCalendar.Infrastructure.csproj", "{A1B4EBF2-A331-44D8-BE00-0D2F1A11C7D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0952CAF6-8DB5-4B6C-9D04-7D7E3248FE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0952CAF6-8DB5-4B6C-9D04-7D7E3248FE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0952CAF6-8DB5-4B6C-9D04-7D7E3248FE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0952CAF6-8DB5-4B6C-9D04-7D7E3248FE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA8CC4B-C15F-4E75-BBCE-255FB77AC911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA8CC4B-C15F-4E75-BBCE-255FB77AC911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA8CC4B-C15F-4E75-BBCE-255FB77AC911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA8CC4B-C15F-4E75-BBCE-255FB77AC911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F4509A-07B2-4E46-BEF7-D0367518D279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F4509A-07B2-4E46-BEF7-D0367518D279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F4509A-07B2-4E46-BEF7-D0367518D279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F4509A-07B2-4E46-BEF7-D0367518D279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B4EBF2-A331-44D8-BE00-0D2F1A11C7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B4EBF2-A331-44D8-BE00-0D2F1A11C7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B4EBF2-A331-44D8-BE00-0D2F1A11C7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B4EBF2-A331-44D8-BE00-0D2F1A11C7D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

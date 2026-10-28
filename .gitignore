@@ -1,0 +1,32 @@
+# .NET (backend)
+**/bin/
+**/obj/
+**/*.iml
+_ReSharper.Caches/
+**/appsettings.Development.json
+**/secrets.json
+
+# IDE
+.idea/
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Environment and secrets
+.env
+.env.*
+*.pfx
+*.pem
+*.key
+
+# Logs and local databases
+*.log
+logs/
+*.db
+*.sqlite
+*.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
