@@ -190,6 +190,8 @@ To populate the website with test data, first **register** an account on the sit
 ```bash
 sudo docker compose exec -T postgres psql -U admin -d Event_Calendar -v email="your@email.com" < event-calendar-backend/scripts/make_admin.sql
 ```
+
+After running this script, you need to **log in again** for the admin role to take effect. To do this, go to <http://localhost:5005/login>.
  
 ### 2. Create Test Users
  
@@ -220,3 +222,13 @@ To test the website as a regular user rather than an admin, you can log in as on
 | `anna@test.com` | `Test123!` |
 | `ivan@test.com` | `Test123!` |
 | `olena@test.com` | `Test123!` |
+
+---
+ 
+## Stopping the Project
+ 
+To end the session, use the following command:
+ 
+```bash
+sudo docker compose down
+```
