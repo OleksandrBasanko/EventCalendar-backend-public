@@ -79,9 +79,142 @@ Relationships:
 
 
 ### Prerequisites
-
+ 
 - .NET 10.0 SDK
 - PostgreSQL server (remote)
 - `dotnet-ef` CLI tool:
-  ```bash
+```bash
   dotnet tool install --global dotnet-ef
+```
+
+---
+ 
+## Getting Started with Docker
+ 
+This section describes how to download and run the EventCalendar project locally using Docker.
+ 
+### Required Tools
+ 
+- WSL (Windows Subsystem for Linux) with Ubuntu installed
+- Docker (available inside WSL)
+- pgAdmin 4 (to create the PostgreSQL server)
+### 1. Create the PostgreSQL Server
+ 
+On your machine, create a PostgreSQL server (you can use pgAdmin 4 for this) with the following parameters:
+ 
+| Tab | Parameter | Value |
+|---|---|---|
+| General | Name | `Event-Calendar` |
+| Connection | Host name / address | `localhost` |
+| Connection | Port | `5002` |
+| Connection | Username | `admin` |
+| Connection | Password | `adminpass` |
+ 
+### 2. Prepare the Project Folders
+ 
+1. Create an empty folder on your disk and name it `EventCalendar`.
+2. Inside this folder, create two more empty folders: `event-calendar-frontend` and `event-calendar-backend`.
+3. Download the files from each repository into the corresponding folder:
+   - `EventCalendar-backend-public` → `event-calendar-backend`
+   - `EventCalendar-frontend-public` → `event-calendar-frontend`
+4. Move the `docker-compose.yaml` file from the `event-calendar-backend` folder into the project root folder (`EventCalendar`).
+The resulting structure should look like this:
+ 
+```
+EventCalendar/
+├── docker-compose.yaml
+├── event-calendar-backend/
+└── event-calendar-frontend/
+```
+ 
+### 3. Build the Docker Images
+ 
+Open the WSL console and navigate to the project root folder:
+ 
+```bash
+cd /mnt/{full path to the folder}
+```
+ 
+Example:
+ 
+```bash
+cd /mnt/d/EventCalendar/
+```
+ 
+Go into the `event-calendar-backend` folder and build the backend image:
+ 
+```bash
+cd event-calendar-backend
+sudo docker build -t event-calendar-backend .
+```
+ 
+Go back to the root folder, then go into the `event-calendar-frontend` folder and build the frontend image:
+ 
+```bash
+cd ..
+cd event-calendar-frontend
+sudo docker build -t event-calendar-frontend .
+```
+ 
+### 4. Run the Project
+ 
+Return to the project root folder and start the containers:
+ 
+```bash
+cd ..
+sudo docker compose up -d
+```
+ 
+If everything was done correctly, you should see the following output:
+ 
+```
+ ✔ Container event_calendar_postgres Running
+ ✔ Container event_calendar_api      Running
+ ✔ Container event_calendar_ui       Running
+```
+ 
+You can now view the project in your browser at: <http://localhost:5005/>
+ 
+---
+ 
+## Seeding Test Data
+ 
+To populate the website with test data, first **register** an account on the site, then run the following commands in order.
+ 
+> **Note:** In the commands below, replace `your@email.com` with the email address you used during registration.
+ 
+### 1. Make Your User an Admin
+ 
+```bash
+sudo docker compose exec -T postgres psql -U admin -d Event_Calendar -v email="your@email.com" < event-calendar-backend/scripts/make_admin.sql
+```
+ 
+### 2. Create Test Users
+ 
+```bash
+bash event-calendar-backend/scripts/seed_users.sh
+```
+ 
+### 3. Create Events
+ 
+```bash
+sudo docker compose exec -T postgres psql -U admin -d Event_Calendar -v email="your@email.com" < event-calendar-backend/scripts/seed_events.sql
+```
+ 
+### 4. Subscribe Test Users to Events
+ 
+```bash
+sudo docker compose exec -T postgres psql -U admin -d Event_Calendar < event-calendar-backend/scripts/subscribe_users.sql
+```
+ 
+That's it — everything is ready!
+ 
+### Testing as a Regular User
+ 
+To test the website as a regular user rather than an admin, you can log in as one of the previously created test users. Go to <http://localhost:5005/login> and use one of the following accounts:
+ 
+| Email | Password |
+|---|---|
+| `anna@test.com` | `Test123!` |
+| `ivan@test.com` | `Test123!` |
+| `olena@test.com` | `Test123!` |
